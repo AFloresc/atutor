@@ -1,3 +1,2 @@
 # ATutor
-# Autor: Alex Flores
-# 2018
+Autor: Alex Flores - 2018
