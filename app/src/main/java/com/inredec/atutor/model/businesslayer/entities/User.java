@@ -2,12 +2,15 @@ package com.inredec.atutor.model.businesslayer.entities;
 
 import com.inredec.atutor.model.businesslayer.entities.base.EntityBase;
 
+import java.util.ArrayList;
+
 
 public class User extends EntityBase{
 
     private String name;
     private String mail;
     private String url_image;
+    private ArrayList<Mark> marks;
 
     public User(){
         this.name = "";
