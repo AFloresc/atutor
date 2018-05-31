@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentatiolayer.controllers.activities.LoginActivity" />
-        <activity android:name=".presentatiolayer.controllers.activities.TestActivity"></activity>
+        <activity android:name=".presentatiolayer.controllers.activities.TestActivity" />
+        <activity android:name=".ConceptsActivity" />
+        <activity android:name=".presentatiolayer.controllers.activities.AddUserTestActivity" />
+        <activity android:name=".presentatiolayer.controllers.activities.MainAppActivity"></activity>
     </application>
 
 </manifest>

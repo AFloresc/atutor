@@ -40,7 +40,7 @@
                 android:textColorHint="#FFF"
                 android:textColor="#FFF"
                 android:maxLines="1"
-                android:drawableLeft="@drawable/ic_person_white_24dp"
+                android:drawableLeft="@drawable/ic_email_white_24dp"
                 android:layout_marginTop="18dp"
                 android:padding="8dp"
                 android:id="@+id/et_username"

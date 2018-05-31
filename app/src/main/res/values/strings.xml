@@ -1,3 +1,45 @@
 <resources>
     <string name="app_name">ATutor</string>
+
+    <string-array name="Concept_names">
+        <item>Activity</item>
+        <item>Intent</item>
+        <item>Dalvik</item>
+        <item>Gradle</item>
+        <item>JDK</item>
+        <item>Android Studio</item>
+        <item>Concept 1</item>
+        <item>Concept 2</item>
+        <item>Concept 3</item>
+        <item>Concept 4</item>
+        <item>Concept 5</item>
+    </string-array>
+
+    <array name="concept_pics">
+        <item>@mipmap/ic_launcher</item>
+        <item>@mipmap/ic_launcher</item>
+        <item>@mipmap/ic_launcher</item>
+        <item>@mipmap/ic_launcher</item>
+        <item>@mipmap/ic_launcher</item>
+        <item>@mipmap/ic_launcher</item>
+    </array>
+
+    <string-array name="statues">
+        <item>Blogging</item>
+        <item>Availible</item>
+        <item>Availible</item>
+        <item>Availible</item>
+        <item>Availible</item>
+        <item>Availible</item>
+    </string-array>
+
+    <string-array name="concept_type">
+        <item>Definition</item>
+        <item>Definition</item>
+        <item>Definition</item>
+        <item>Definition</item>
+        <item>Definition</item>
+        <item>Definition</item>
+    </string-array>
+
 </resources>

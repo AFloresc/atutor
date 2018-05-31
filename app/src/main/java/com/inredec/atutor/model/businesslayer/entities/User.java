@@ -9,13 +9,30 @@ public class User extends EntityBase{
 
     private String name;
     private String mail;
+    private String password;
     private String url_image;
     private ArrayList<Mark> marks;
 
     public User(){
         this.name = "";
         this.mail = "";
-        this.url_image="";
+        this.password = "";
+        this.url_image=" ";
+    }
+
+    public User(String name, String mail, String password) {
+        this.name = name;
+        this.mail = mail;
+        this.password = password;
+        this.url_image = " ";
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUrl_image() {
@@ -40,5 +57,15 @@ public class User extends EntityBase{
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", mail='" + mail + '\'' +
+                ", password='" + password + '\'' +
+                ", url_image='" + url_image + '\'' +
+                '}';
     }
 }

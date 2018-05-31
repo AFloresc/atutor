@@ -38,6 +38,40 @@ public class UserDAO implements IUserDAO {
 
     }
 
+
+    @Override
+    public void userSave(List<User> users) {
+        Gson gson = new Gson();
+        String json = gson.toJson(users);
+        OutputStreamWriter osr = null;
+        try{
+            osr = new OutputStreamWriter(
+                    context.openFileOutput("users.json",
+                            Context.MODE_PRIVATE));
+            osr.write(json);
+            osr.close();
+        }catch(Exception ex){
+            throw
+                    new RuntimeException(
+                            "Petazo al guardar los usuarios en disco!!!");
+        }
+    }
+
+    @Override
+    public void userSave(User user) {
+        List<User>users = getUsersFromFlatFile();
+
+        users.add(user);
+        userSave(users);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<User>();
+        users =  getUsersFromFlatFile();
+        return users;
+    }
+
     private List<User> getUsersFromFlatFile() {
 
         Gson gson = new Gson();
@@ -58,23 +92,4 @@ public class UserDAO implements IUserDAO {
         return  users;
     }
 
-    @Override
-    public void userSave(List<User> users) {
-        Gson gson = new Gson();
-        String json = gson.toJson(users);
-        OutputStreamWriter osr = null;
-        try{
-            osr = new OutputStreamWriter(
-                    context.openFileOutput("users.json",
-                            Context.MODE_PRIVATE));
-            osr.write(json);
-            osr.close();
-        }catch(Exception ex){
-            throw
-                    new RuntimeException(
-                            "Petazo al guardar los usuarios en disco!!!");
-        }
-
-
-    }
 }

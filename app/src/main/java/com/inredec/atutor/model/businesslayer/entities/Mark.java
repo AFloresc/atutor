@@ -1,11 +1,13 @@
 package com.inredec.atutor.model.businesslayer.entities;
 
 
+import java.util.Date;
 
 public class Mark {
 
     private Test test;
     private int mark;
+    private Date date;
 
     public Mark(Test test, int mark) {
         this.test = test;

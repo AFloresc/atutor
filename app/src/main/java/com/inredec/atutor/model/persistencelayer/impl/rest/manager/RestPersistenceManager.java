@@ -1,5 +1,6 @@
 package com.inredec.atutor.model.persistencelayer.impl.rest.manager;
 
+import com.inredec.atutor.model.persistencelayer.api.IUserDAO;
 import com.inredec.atutor.model.persistencelayer.manager.PersistenceManager;
 
 /**
@@ -7,4 +8,8 @@ import com.inredec.atutor.model.persistencelayer.manager.PersistenceManager;
  */
 
 public class RestPersistenceManager  extends PersistenceManager{
+    @Override
+    public IUserDAO getUserDAO() {
+        return null;
+    }
 }
