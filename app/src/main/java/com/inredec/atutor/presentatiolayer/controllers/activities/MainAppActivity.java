@@ -1,13 +1,13 @@
 package com.inredec.atutor.presentatiolayer.controllers.activities;
 
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 import com.inredec.atutor.R;
+import com.inredec.atutor.presentatiolayer.Adapters.ViewPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +19,8 @@ public class MainAppActivity extends AppCompatActivity {
     TabLayout tabLayout;
     @BindView(R.id.viewpager_id)
     ViewPager viewPager;
+    @BindView(R.id.my_toolbar)
+    Toolbar myToolbar;
 
     ViewPagerAdapter adapter;
 
@@ -27,6 +29,8 @@ public class MainAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_app);
         ButterKnife.bind(this);
+
+        setSupportActionBar(myToolbar);
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -47,7 +51,8 @@ public class MainAppActivity extends AppCompatActivity {
         tabLayout.getTabAt(3).setIcon(R.drawable.ic_test);
 
         //Remove shadow
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setElevation(0);
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.setElevation(0);
+        myToolbar.setElevation(0);
     }
 }

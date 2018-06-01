@@ -1,4 +1,4 @@
-package com.inredec.atutor.presentatiolayer.controllers.activities;
+package com.inredec.atutor.presentatiolayer.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
