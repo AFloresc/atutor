@@ -12,9 +12,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.inredec.atutor.R;
+import com.inredec.atutor.model.businesslayer.entities.Login;
+import com.inredec.atutor.model.businesslayer.entities.User;
+import com.inredec.atutor.model.servicelayer.UserClient;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,6 +42,12 @@ public class LoginActivity extends AppCompatActivity {
     Button btLogin;
     @BindView(R.id.bt_register)
     Button btRegister;
+
+
+
+
+    private UserClient userClient;
+    private static String token;
 
 
     @Override
@@ -56,9 +75,14 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,
                             "Campos correo/pass rellenados",
                             Toast.LENGTH_SHORT).show();
+
+                   // login();
                     // Cambiar activity
+
+
                     Intent myIntent = new Intent(LoginActivity.this, MainAppActivity.class);
                     //Bundle extras = myIntent.getExtras();
+
                     startActivity(myIntent);
                     ///extras.putString("etUsernameValue", etUsername.getText().toString().trim());
                     //extras.putString("etValue", etUsername.getText().toString().trim());
@@ -75,5 +99,81 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+    }
+    private void login(){
+        NetworkService();
+        Login login = new Login("agauser", "Secret");
+        Call<User> call = userClient.login(login);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(LoginActivity.this,
+                            response.body().getToken(),
+                            Toast.LENGTH_SHORT).show();
+                    //save token
+                    token = response.body().getToken();
+                }
+                else{
+                    Toast.makeText(LoginActivity.this,
+                            "login not correct :(",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(LoginActivity.this,
+                        "error :(",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        call.request().url();
+    }
+    private void getSecret(){
+        Call<ResponseBody> call = userClient.getSecret(token);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    try {
+                        Toast.makeText(LoginActivity.this,
+                                response.body().string(),
+                                Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    Toast.makeText(LoginActivity.this,
+                            "token is not correct :(",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(LoginActivity.this,
+                        "error :(",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void  NetworkService(){
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient.Builder client = new OkHttpClient.Builder()
+                .addInterceptor(interceptor);
+
+        Retrofit.Builder builder = new Retrofit.Builder()
+                //.baseUrl("http://10.0.2.2:5000")
+                .baseUrl("http://192.168.1.61:5000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client.build());
+        Retrofit retrofit = builder.build();
+
+        userClient = retrofit.create(UserClient.class);
     }
 }

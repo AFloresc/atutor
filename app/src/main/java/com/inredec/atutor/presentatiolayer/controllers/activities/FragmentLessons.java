@@ -1,14 +1,21 @@
 package com.inredec.atutor.presentatiolayer.controllers.activities;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.inredec.atutor.R;
 import com.inredec.atutor.model.businesslayer.entities.Concept;
@@ -21,19 +28,54 @@ import java.util.List;
 
 public class FragmentLessons extends Fragment {
 
-    View v;
+    private View v;
     private RecyclerView myRecycleView;
     private List<Lesson> lstLessons;
+    private RecyclerViewAdapter recyclerViewAdapter;
+
+    SearchView searchView;
 
     public FragmentLessons() {
     }
+/*
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        changeSearchTextColor(searchView);
+        final MenuItem myActionMenuItem = menu.findItem(R.id.search);
+        searchView = (SearchView) myActionMenuItem.getActionView();
+        ((EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text)).setHintTextColor(getResources().getColor(R.color.white));
+
+        // listeninng search query text change
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (!searchView.isIconified()){
+                    searchView.setIconified(true);
+                }
+                myActionMenuItem.collapseActionView();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                final List<Lesson> filtermodelist = filter(lstLessons, newText);
+                recyclerViewAdapter.setfilter(filtermodelist);
+                return true;
+            }
+        });
+
+
+
+    }*/
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.lessons_fragment, container, false);
         myRecycleView = (RecyclerView)v.findViewById(R.id.lesson_recycler);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstLessons);
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstLessons);
         myRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecycleView.setAdapter(recyclerViewAdapter);
         return v;
@@ -103,4 +145,33 @@ public class FragmentLessons extends Fragment {
 
 
     }
+
+    private void changeSearchTextColor(View view){
+        if (view != null){
+            if (view instanceof TextView){
+                ((TextView) view).setTextColor(Color.WHITE);
+                return;
+            }else if(view instanceof ViewGroup){
+                ViewGroup viewGroup = (ViewGroup)view;
+                for (int i = 0; 1 < viewGroup.getChildCount(); i++){
+                    changeSearchTextColor(viewGroup.getChildAt(i));
+                }
+            }
+
+        }
+    }
+
+    // Filter lessons method
+    private List<Lesson> filter(List<Lesson> p1, String query){
+        query = query.toLowerCase();
+        final List<Lesson> filteredModeList = new ArrayList<>();
+        for (Lesson model:p1){
+            final String text = model.getName().toLowerCase();
+            if (text.startsWith(query)){
+                filteredModeList.add(model);
+            }
+        }
+        return filteredModeList;
+    }
+
 }

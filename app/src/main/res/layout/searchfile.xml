@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_24dp"
+        android:orderInCategory="300"
+        android:title="@strings/search_here"
+        android:actionViewClass="android.support.v7.widget.SearchView"
+        android:showAsAction="ifRoom|collapseActionView"
+        />
+
+</main>

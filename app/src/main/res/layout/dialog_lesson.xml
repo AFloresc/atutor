@@ -39,13 +39,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:text="Abrir lección"
+            android:text="@string/abrir_lección"
             android:layout_marginTop="10dp"/>
         
         
     </LinearLayout>
 
     <ImageView
+        android:contentDescription="@string/lesson_description"
         android:id="@+id/dialog_lesson_img"
         android:layout_width="120dp"
         android:layout_height="120dp"

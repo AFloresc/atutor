@@ -1,11 +1,11 @@
 package com.inredec.atutor.model.businesslayer.entities;
 
-import com.inredec.atutor.model.businesslayer.entities.base.EntityBase;
+
 
 import java.util.ArrayList;
 
 
-public class Topic extends EntityBase {
+public class Topic  {
 
     private int id;
     private String title;

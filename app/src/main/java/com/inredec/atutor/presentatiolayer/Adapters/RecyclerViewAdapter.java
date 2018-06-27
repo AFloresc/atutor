@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.inredec.atutor.R;
 import com.inredec.atutor.model.businesslayer.entities.Lesson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
@@ -91,6 +92,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_level = (TextView)itemView.findViewById(R.id.level_lesson);
             img = (ImageView)itemView.findViewById(R.id.img_lesson);
         }
+    }
+
+    //To filter search bar
+    public void  setfilter(List<Lesson> listlessons){
+        mData = new ArrayList<>();
+        mData.addAll(listlessons);
+        notifyDataSetChanged();
     }
 
 }

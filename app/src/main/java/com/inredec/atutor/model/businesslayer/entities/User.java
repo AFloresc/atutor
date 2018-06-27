@@ -1,17 +1,20 @@
 package com.inredec.atutor.model.businesslayer.entities;
 
-import com.inredec.atutor.model.businesslayer.entities.base.EntityBase;
+
 
 import java.util.ArrayList;
 
 
-public class User extends EntityBase{
+public class User {
 
     private String name;
     private String mail;
     private String password;
     private String url_image;
     private ArrayList<Mark> marks;
+
+
+    private String token;
 
     public User(){
         this.name = "";
@@ -57,6 +60,14 @@ public class User extends EntityBase{
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override
