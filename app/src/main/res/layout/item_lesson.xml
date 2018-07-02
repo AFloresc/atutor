@@ -8,10 +8,10 @@
     android:id="@+id/lesson_item">
 
     <ImageView
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:id="@+id/img_lesson"/>
+        android:id="@+id/img_lesson"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/ic_launcher_round" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +29,18 @@
             android:layout_height="wrap_content"
             android:text="Nivel: "
             android:id="@+id/level_lesson"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rating"
+            android:text="0.0"
+            android:background="@drawable/rating_background"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/ic_star_black_24dp"
+            android:paddingRight="5dp"
+            />
     </LinearLayout>
     <LinearLayout
         android:gravity="end"
