@@ -73,7 +73,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final Lesson lesson =lessonListFiltered.get(position);
 
-        holder.tv_name.setText(lesson.getId());
+        holder.tv_name.setText(lesson.getName());
         holder.tv_level.setText(lesson.getLevel());
 
         Glide.with(context)

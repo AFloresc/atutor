@@ -2,15 +2,26 @@ package com.inredec.atutor.model.businesslayer.entities;
 
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 
 public class User {
 
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("mail")
     private String mail;
+
+    @SerializedName("password")
     private String password;
+
+    @SerializedName("url_image")
     private String url_image;
+
+    @SerializedName("marks")
     private ArrayList<Mark> marks;
 
 

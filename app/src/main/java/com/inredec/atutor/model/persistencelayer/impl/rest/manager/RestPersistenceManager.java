@@ -16,7 +16,7 @@ public class RestPersistenceManager  extends PersistenceManager{
     private Context context;
     private IUserDAO userDAO;
 
-    private static final String BASE_URL = "http://10.2.2:5000";
+    /*private static final String BASE_URL = "http://10.0.2.2:5000";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient(){
@@ -26,7 +26,7 @@ public class RestPersistenceManager  extends PersistenceManager{
                     .build();
         }
         return retrofit;
-    }
+    }*/
 
     @Override
     public IUserDAO getUserDAO() {

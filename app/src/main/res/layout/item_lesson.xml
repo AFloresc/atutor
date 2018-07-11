@@ -30,6 +30,11 @@
             android:text="Nivel: "
             android:id="@+id/level_lesson"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/content_lesson"
+            android:visibility="invisible"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rating"
@@ -41,6 +46,7 @@
             android:drawableLeft="@drawable/ic_star_black_24dp"
             android:paddingRight="5dp"
             />
+
     </LinearLayout>
     <LinearLayout
         android:gravity="end"

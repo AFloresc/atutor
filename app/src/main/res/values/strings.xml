@@ -58,6 +58,14 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="pref_file">com.inredec.preference_file</string>
+    <string name="pref_user_name">com.inredec.preference_user_name</string>
+    <string name="pref_login_status">com.inredec.preference_login_status</string>
+
     <string name="action_settings">settings</string>
+    <string name="lesson_name">Lesson name:</string>
+    <string name="aa_description">Lesson description</string>
+
+
 
 </resources>

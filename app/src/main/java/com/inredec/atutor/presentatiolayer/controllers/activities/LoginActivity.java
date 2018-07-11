@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         call.request().url();
     }
+
     private void getSecret(){
         Call<ResponseBody> call = userClient.getSecret(token);
 
@@ -176,4 +178,13 @@ public class LoginActivity extends AppCompatActivity {
 
         userClient = retrofit.create(UserClient.class);
     }
+
+    private boolean isEmailValid(String email) {
+        return email.contains("@");
+    }
+
+    private boolean isPasswordValid(String password) {
+        return password.length() > 7;
+    }
+
 }

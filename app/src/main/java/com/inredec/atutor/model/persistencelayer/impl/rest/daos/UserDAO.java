@@ -6,6 +6,8 @@ import com.inredec.atutor.model.persistencelayer.api.IUserDAO;
 import java.util.List;
 
 public class UserDAO implements IUserDAO {
+
+
     @Override
     public User getUserByMail(String email) {
         return null;

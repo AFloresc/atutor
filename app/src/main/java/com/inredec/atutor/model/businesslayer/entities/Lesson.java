@@ -1,15 +1,38 @@
 package com.inredec.atutor.model.businesslayer.entities;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Lesson {
 
-    private int id;
+    @SerializedName("id")
+    private Long id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("urlImage")
     private String image;
+
+    @SerializedName("level")
     private String level;
+
+    //@SerializedName("test")
+    private Test test;
+
     private int Photo;
+
+    private ArrayList<Content> contents;
+
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
+    }
 
     public String getLevel() {
         return level;
@@ -27,10 +50,10 @@ public class Lesson {
         this.level = level;
     }
 
-    private ArrayList<Content> contents;
+
     private ArrayList<Concept> concepts;
 
-    public Lesson(int id, String name,
+    public Lesson(Long id, String name,
                   String image,
                   String level,
                   ArrayList<Content> contents,
@@ -44,13 +67,13 @@ public class Lesson {
         this.Photo = photo;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
 
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
